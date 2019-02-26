@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+            android:id="@+id/menu_search"
+            android:title="search"
+            android:icon="@drawable/ic_search"/>
+
+    <item
+            android:id="@+id/menu_suggestions"
+            android:title="feed"
+            android:icon="@drawable/ic_star"/>
+
+    <item
+            android:id="@+id/menu_news"
+            android:title="feed"
+            android:icon="@drawable/ic_newspaper"/>
+
+    <item
+            android:id="@+id/menu_favorites"
+            android:title="feed2"
+            android:icon="@drawable/ic_like"/>
+
+    <item
+            android:id="@+id/menu_settings"
+            android:title="feed2"
+            android:icon="@drawable/ic_settings"/>
+
+</menu>

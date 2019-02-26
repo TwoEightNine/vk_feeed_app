@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          android:id="@+id/errorView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:background="@color/background"
+          android:elevation="6dp"
+          android:gravity="center"
+          android:padding="18dp"
+          android:visibility="gone"
+          android:textColor="@color/textWarning"
+          android:textSize="18sp"
+          android:textStyle="bold"
+          tools:text="Authorization required"/>

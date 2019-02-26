@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Feeed</string>
+    <string name="no_internet">no network connections</string>
+    <string name="error_loading_user">error loading user</string>
+    <string name="try_again">try again</string>
+    <string name="online">online</string>
+    <string name="unknown_error">unknown error</string>
+    <string name="copied_to_clipboard">%s copied to clipboard</string>
+    <string name="accounts">accounts</string>
+    <string name="about">about</string>
+    <string name="really_add_account">do you really want to add a new account? app will be restarted</string>
+    <string name="switch_accounts">switch accounts?</string>
+    <string name="last_seen">last seen: %s</string>
+    <string name="contacts">contacts</string>
+    <string name="search_hint">search</string>
+    <string name="add_to_contacts">add profile</string>
+    <string name="chat_user">open chat</string>
+    <string name="remove_contact">do you really want to remove contact?</string>
+    <string name="not_found">hmm.. not found</string>
+    <string name="downloading_file">downloading file..</string>
+    <string name="share_image">share the image</string>
+    <string name="permit_storage">app needs the permission for downloading images</string>
+    <string name="file_downloaded">downloaded</string>
+    <string name="file_not_downloaded">unable to download file</string>
+    <string name="image_copied">image copied to \'saved\'</string>
+    <string name="image_not_copied">unable to copy the image</string>
+    <string name="post_not_liked">unable to like the post</string>
+    <string name="no_internet_for_logging_in">you have to turn the internet on for logging in</string>
+    <string name="went_wrong">something went wrong..</string>
+    <string name="details">details</string>
+    <string name="send_report">send report</string>
+    <string name="post_photo_subtitle">(%d/%d) %s</string>
+    <string name="need_access_to_storage">app needs an access to your device\'s storage for downloading files</string>
+    <string name="sent_successfully">sent successfully</string>
+    <string name="your_comment">your comment..</string>
+
+    <string name="settings_general">general</string>
+    <string name="hide_ads">hide posts marked as ads</string>
+    <string name="columns_in_feed">columns in feed</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<global.msnthrp.feeed.views.SquareLinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+            android:layout_margin="@dimen/photo_margin"
+            android:id="@+id/ivPhoto"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+</global.msnthrp.feeed.views.SquareLinearLayout>

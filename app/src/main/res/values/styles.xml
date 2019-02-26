@@ -1,0 +1,59 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:statusBarColor">@color/colorAccent</item>
+    </style>
+
+    <style name="MainText">
+        <item name="android:textColor">@color/textMain</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="OtherText">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/textOther</item>
+    </style>
+
+    <style name="AccentText">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="WhiteText">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/selector_button</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="ToolbarTitleTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+</resources>

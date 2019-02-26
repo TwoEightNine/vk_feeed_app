@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:layout_marginTop="16dp"
+                    android:textSize="40sp"
+                    android:text="@string/went_wrong"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    style="@style/MainText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <ImageView
+                    android:layout_margin="48dp"
+                    android:src="@drawable/ic_sad"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:layout_gravity="center"
+                    android:textSize="24sp"
+                    style="@style/MainText"
+                    android:text="@string/details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    style="@style/MainText"
+                    android:textSize="14sp"
+                    tools:text="CAUSE OF ERROR:\nandroid.view.InflateException: Binary XML file line #2"
+                    android:id="@+id/tvDetails"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:id="@+id/btnSendReport"
+                    android:text="@string/send_report"
+                    android:layout_margin="8dp"
+                    android:layout_gravity="center"
+                    style="@style/Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
