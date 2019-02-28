@@ -7,14 +7,14 @@ import global.msnthrp.feeed.models.attachments.Photo
 import global.msnthrp.feeed.models.owner.Group
 import global.msnthrp.feeed.network.ApiService
 import global.msnthrp.feeed.network.BaseResponse
-import global.msnthrp.feeed.storage.Prefs
+import global.msnthrp.feeed.prefs.LivePrefs
 import global.msnthrp.feeed.utils.subscribeSmart
 import io.reactivex.Single
 import javax.inject.Inject
 
 class FeedRepository @Inject constructor(
     private val api: ApiService,
-    private val prefs: Prefs
+    private val livePrefs: LivePrefs
 ) {
 
     fun loadNewsFeed(

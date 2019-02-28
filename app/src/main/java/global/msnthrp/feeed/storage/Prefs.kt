@@ -19,7 +19,7 @@ class Prefs @Inject constructor(private val context: Context) {
         set(value) = prefs.edit().putInt(COLUMNS_COUNT, value).apply()
 
     companion object {
-        const val NAME = "prefs"
+        const val NAME = "livePrefs"
 
         const val HIDE_ADS = "hideAds"
         const val COLUMNS_COUNT = "gridSpanCount"

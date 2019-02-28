@@ -13,11 +13,15 @@ import global.msnthrp.feeed.feed.model.PostPhoto
 import global.msnthrp.feeed.feed.viewmodel.FeedViewModel
 import global.msnthrp.feeed.imageviewer.activities.ImageViewerActivity
 import global.msnthrp.feeed.models.Wrapper
+import global.msnthrp.feeed.prefs.LivePrefs
 import global.msnthrp.feeed.utils.showAlert
 import kotlinx.android.synthetic.main.fragment_feed.*
 import javax.inject.Inject
 
 abstract class FeedFragment : BaseFragment() {
+
+    @Inject
+    lateinit var livePrefs: LivePrefs
 
     @Inject
     lateinit var viewModelFactory: FeedViewModel.Factory
@@ -33,7 +37,6 @@ abstract class FeedFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        App.appComponent.inject(this)
         viewModel = ViewModelProviders.of(this, viewModelFactory)[getViewModelClass()]
         prepareViewModel()
         viewModel.getFeed().observe(this, Observer { updateUi(it) })
@@ -42,12 +45,17 @@ abstract class FeedFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        App.appComponent.inject(this)
         rvPhotos.layoutManager = GridLayoutManager(context, SPAN_COUNT)
         rvPhotos.adapter = adapter
         swipeRefresh.isRefreshing = true
         swipeRefresh.setOnRefreshListener {
             viewModel.resetFeed()
             loadMore()
+        }
+
+        livePrefs.gridColumns.observe(this) { columnsCount ->
+            (rvPhotos.layoutManager as? GridLayoutManager)?.spanCount = columnsCount
         }
     }
 

@@ -5,6 +5,7 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import global.msnthrp.feeed.network.ApiService
+import global.msnthrp.feeed.prefs.LivePrefs
 import global.msnthrp.feeed.storage.DbHelper
 import global.msnthrp.feeed.storage.Session
 import global.msnthrp.feeed.utils.ApiUtils
@@ -25,6 +26,10 @@ class ContextModule(private val app: Application) {
     @Provides
     @Singleton
     fun provideDbHelper(context: Context): DbHelper = DbHelper(context)
+
+    @Provides
+    @Singleton
+    fun provideLivePrefs(context: Context): LivePrefs = LivePrefs(context)
 
     @Provides
     @Singleton
