@@ -27,7 +27,7 @@ class GroupFeedFragment : FeedFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ivHeader.load(group?.photo200)
-        tvHeader.text = group?.name
+        tvHeader.text = group?.name?.toLowerCase()
     }
 
     override fun prepareViewModel() {

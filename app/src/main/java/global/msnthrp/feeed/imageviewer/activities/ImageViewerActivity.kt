@@ -98,8 +98,8 @@ class ImageViewerActivity : AppCompatActivity() {
     private fun invalidatePhoto() {
         getWallPost()?.apply {
             ivPhoto.load(owner?.getPhoto())
-            tvOwner.text = owner?.getTitle()
-            tvDate.text = getTime(date, full = true)
+            tvOwner.text = owner?.getTitle()?.toLowerCase()
+            tvDate.text = getTime(date, full = true).toLowerCase()
             ivLike.setImageResource(
                 if (isLiked) R.drawable.ic_like_red else R.drawable.ic_like
             )
