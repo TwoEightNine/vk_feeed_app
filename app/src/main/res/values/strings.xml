@@ -37,4 +37,12 @@
     <string name="settings_general">general</string>
     <string name="hide_ads">hide posts marked as ads</string>
     <string name="columns_in_feed">columns in feed</string>
+
+    <string name="settings_account">account</string>
+    <string name="log_out">log out</string>
+    <string name="want_to_log_out">do you really want to log out?</string>
+
+    <string name="settings_about">about</string>
+    <string name="version">%s\nver. %s (since %s)</string>
+
 </resources>

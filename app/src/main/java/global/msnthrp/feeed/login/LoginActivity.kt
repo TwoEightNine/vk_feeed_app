@@ -119,12 +119,20 @@ class LoginActivity : AppCompatActivity() {
         session.token = token
         session.userId = userId
 
-        toDialogs()
+        apiUtils.getMyself { user ->
+            if (user != null) {
+                session.userName = user.getTitle()
+                toDialogs()
+            } else {
+                onFailed()
+            }
+        }
     }
 
     private fun onFailed() {
         showToast(this, R.string.error_loading_user)
         session.token = ""
+        finish()
     }
 
     private fun extract(from: String, regex: String): String {

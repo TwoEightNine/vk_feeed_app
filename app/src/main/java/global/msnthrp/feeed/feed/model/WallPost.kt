@@ -57,6 +57,9 @@ data class WallPost(
             likes.userLikes = if (value) 1 else 0
         }
 
+    val isAds: Boolean
+        get() = markedAsAds == 1
+
     fun id() = if (id != 0) id else postId
 
     fun ownerId() = if (ownerId != 0) ownerId else sourceId

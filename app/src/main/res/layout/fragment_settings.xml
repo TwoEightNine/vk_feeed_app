@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
     <TextView
             android:layout_marginTop="16dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="24dp"
             style="@style/MainText"
             android:textStyle="bold"
@@ -32,5 +32,63 @@
             app:text="@string/columns_in_feed"
             app:min="3"
             app:max="5"/>
+
+    <TextView
+            android:layout_marginTop="28dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="24dp"
+            style="@style/MainText"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="@string/settings_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/tvAccount"
+                style="@style/MainText"
+                android:textSize="18sp"
+                android:layout_marginEnd="12dp"
+                android:layout_toStartOf="@+id/btnLogOut"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="mista sinista"/>
+
+        <Button
+                android:id="@+id/btnLogOut"
+                android:text="@string/log_out"
+                android:layout_alignParentEnd="true"
+                style="@style/Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+
+    <TextView
+            android:layout_marginTop="28dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="24dp"
+            style="@style/MainText"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:text="@string/settings_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    <TextView
+            android:id="@+id/tvVersion"
+            style="@style/MainText"
+            android:layout_margin="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Feeed version 0.1"/>
 
 </LinearLayout>

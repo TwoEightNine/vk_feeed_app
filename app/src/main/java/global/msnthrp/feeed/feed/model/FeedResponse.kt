@@ -29,7 +29,7 @@ data class FeedResponse(
      * filters posts with photos
      * fills items with owners
      */
-    fun getFilledItems(): ArrayList<WallPost> {
+    fun getFilledItems(hideAds: Boolean = false): ArrayList<WallPost> {
         val items = ArrayList(this.items.filter { it.attachments.hasSmthToShow() })
         items.forEach {
             it.owner = if (it.ownerId() > 0) {
@@ -37,6 +37,9 @@ data class FeedResponse(
             } else {
                 getGroupById(-it.ownerId())
             }
+        }
+        if (hideAds) {
+            items.removeAll { it.isAds }
         }
         return ArrayList(items.distinctBy { it.toString() })
     }

@@ -78,7 +78,7 @@ class FeedRepository @Inject constructor(
         onError: (String) -> Unit
     ) {
         this.subscribeSmart({ feedResponse ->
-            val wallPosts = feedResponse.getFilledItems()
+            val wallPosts = feedResponse.getFilledItems(hideAds())
             val postPhotos = PostPhoto.fromWallPosts(wallPosts)
             wallPosts.forEach { it.attachments = null }
             onSuccess(postPhotos, wallPosts)
@@ -92,7 +92,7 @@ class FeedRepository @Inject constructor(
         onError: (String) -> Unit
     ) {
         this.subscribeSmart({ feedResponse ->
-            val wallPosts = feedResponse.getFilledItems()
+            val wallPosts = feedResponse.getFilledItems(hideAds())
             val postPhotos = PostPhoto.fromWallPosts(wallPosts)
             wallPosts.forEach { it.attachments = null }
             onSuccess(postPhotos, wallPosts, feedResponse.nextFrom)
@@ -100,5 +100,7 @@ class FeedRepository @Inject constructor(
             onError(message)
         })
     }
+
+    private fun hideAds() = livePrefs.hideAds.getValue()
 
 }
