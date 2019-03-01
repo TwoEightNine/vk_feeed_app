@@ -10,6 +10,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread.setDefaultUncaughtExceptionHandler(ExceptionHandler(this))
+        // i cant use it while sending reports is not working
+//        Thread.setDefaultUncaughtExceptionHandler(ExceptionHandler(this))
     }
 }
