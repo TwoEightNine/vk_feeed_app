@@ -17,7 +17,7 @@
             app:menu="@menu/menu_main_bottom"
             android:elevation="60dp"
             android:layout_alignParentBottom="true"
-            app:itemBackground="@android:color/white"
+            app:itemBackground="@color/colorPrimary"
             app:itemIconTint="@color/icon_bottom"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_bar_height"

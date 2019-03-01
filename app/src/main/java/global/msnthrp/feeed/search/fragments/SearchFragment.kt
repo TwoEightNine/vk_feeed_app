@@ -37,8 +37,9 @@ class SearchFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         rvSearch.layoutManager = LinearLayoutManager(context)
         rvSearch.adapter = adapter
-        rvSearch.setOnScrollChangeListener { _, _, _, _, _ ->
+        rvSearch.setOnTouchListener { _, _ ->
             activity?.let { hideKeyboard(it) }
+            false
         }
     }
 

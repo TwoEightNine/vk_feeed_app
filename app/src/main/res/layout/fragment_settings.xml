@@ -30,8 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:text="@string/columns_in_feed"
-            app:min="3"
-            app:max="5"/>
+            app:min="2"
+            app:max="6"/>
 
     <TextView
             android:layout_marginTop="28dp"

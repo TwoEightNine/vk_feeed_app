@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Feeed</string>
+    <string name="app_name">mjölkdalen</string>
     <string name="no_internet">no network connections</string>
     <string name="error_loading_user">error loading user</string>
     <string name="try_again">try again</string>

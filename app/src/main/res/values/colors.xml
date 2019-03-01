@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#fff</color>
+    <color name="colorPrimary">#222</color>
     <color name="colorPrimaryDark">@color/colorPrimary</color>
-    <color name="colorAccent">#1A237E</color>
-    <color name="accentLight">#4A53ae</color>
+    <color name="colorAccent">#995ADA</color>
+    <color name="accentLight">#A97FDA</color>
 
-    <color name="textMain">#111</color>
-    <color name="textOther">#666</color>
-    <color name="textToolbarMain">#fff</color>
-    <color name="textToolbarOther">#bbb</color>
-    <color name="divider">#ddd</color>
+    <color name="textMain">#ddd</color>
+    <color name="textOther">#999</color>
+    <color name="divider">#555</color>
     <color name="textWarning">#df2050</color>
-    <color name="background">#fff</color>
-    <color name="accentTrans">#c01A237E</color>
-    <color name="accentTransLight">#ab4A53ae</color>
+    <color name="background">#111</color>
+    <color name="accentTrans">#c0824AB4</color>
+    <color name="accentTransLight">#ab9D72CC</color>
     <color name="icons">#fff</color>
-    <color name="iconsDisabled">#999</color>
-    <color name="accentDisabled">#363A68</color>
+    <color name="iconsDisabled">#666</color>
+    <color name="accentDisabled">#33234D</color>
     <color name="redBar">#df2070</color>
     <color name="shapeDate">#aaa</color>
     <color name="red_like">#FF4747</color>
