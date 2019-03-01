@@ -27,7 +27,7 @@ class SearchAdapter(
         fun bind(group: Group) {
             with(itemView) {
                 ivPhoto.load(group.photo100)
-                tvTitle.text = group.name
+                tvTitle.text = group.name.toLowerCase()
                 setOnClickListener { onClick(items[adapterPosition]) }
             }
         }

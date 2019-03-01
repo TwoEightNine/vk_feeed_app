@@ -29,7 +29,7 @@ class DialogsAdapter(
                 ivPhoto.load(owner.getPhoto()) {
                     placeholder(R.drawable.shape_placeholder)
                 }
-                tvTitle.text = owner.getTitle()
+                tvTitle.text = owner.getTitle().toLowerCase()
                 setOnClickListener { onClick(items[adapterPosition]) }
             }
         }
