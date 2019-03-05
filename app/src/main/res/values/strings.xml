@@ -19,10 +19,11 @@
     <string name="not_found">hmm.. not found</string>
     <string name="downloading_file">downloading file..</string>
     <string name="share_image">share the image</string>
+    <string name="share_post">share the whole post</string>
     <string name="permit_storage">app needs the permission for downloading images</string>
     <string name="file_downloaded">downloaded</string>
     <string name="file_not_downloaded">unable to download file</string>
-    <string name="image_copied">image copied to \'saved\'</string>
+    <string name="image_copied">image copied to album</string>
     <string name="image_not_copied">unable to copy the image</string>
     <string name="post_not_liked">unable to like the post</string>
     <string name="no_internet_for_logging_in">you have to turn the internet on for logging in</string>
@@ -33,6 +34,8 @@
     <string name="need_access_to_storage">app needs an access to your device\'s storage for downloading files</string>
     <string name="sent_successfully">sent successfully</string>
     <string name="your_comment">your comment..</string>
+    <string name="send_in_message">send in message</string>
+    <string name="share_via_other_app">share via other app</string>
 
     <string name="settings_general">general</string>
     <string name="hide_ads">hide posts marked as ads</string>

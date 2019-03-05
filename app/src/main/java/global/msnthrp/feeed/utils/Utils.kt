@@ -93,6 +93,16 @@ fun shareImage(context: Context?, url: String) {
     })
 }
 
+fun shareText(context: Context?, text: String) {
+    context ?: return
+
+    val sharingIntent = Intent(android.content.Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(android.content.Intent.EXTRA_TEXT, text)
+    }
+    context.startActivity(Intent.createChooser(sharingIntent, context.getString(R.string.share_post)))
+}
+
 fun time() = (System.currentTimeMillis() / 1000L).toInt()
 
 fun isDev(userId: Int) = App.ID_SALTS
@@ -152,12 +162,14 @@ fun restartApp(context: Context?) {
 
     val mStartActivity = getRestartIntent(context)
     val mPendingIntentId = 123456
-    val mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT)
+    val mPendingIntent =
+        PendingIntent.getActivity(context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT)
     val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 500, mPendingIntent)
 
     val notificationManager = context.getSystemService(
-        Context.NOTIFICATION_SERVICE) as NotificationManager
+        Context.NOTIFICATION_SERVICE
+    ) as NotificationManager
     notificationManager.cancelAll()
     System.exit(0)
 }
@@ -177,7 +189,9 @@ fun getRestartIntent(context: Context): Intent {
         }
     }
 
-    throw IllegalStateException("Unable to determine default activity for "
-            + packageName
-            + ". Does an activity specify the DEFAULT category in its intent filter?")
+    throw IllegalStateException(
+        "Unable to determine default activity for "
+                + packageName
+                + ". Does an activity specify the DEFAULT category in its intent filter?"
+    )
 }

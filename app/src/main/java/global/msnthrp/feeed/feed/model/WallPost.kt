@@ -51,6 +51,9 @@ data class WallPost(
 
     override fun toString() = "wall${ownerId()}_${id()}"
 
+    val link: String
+        get() = "https://vk.com/${toString()}"
+
     var isLiked: Boolean
         get() = likes.userLikes == 1
         set(value) {

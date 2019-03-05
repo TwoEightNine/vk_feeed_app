@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import global.msnthrp.feeed.App
 import global.msnthrp.feeed.R
 import global.msnthrp.feeed.dialogs.activities.DialogsActivity
@@ -20,7 +21,8 @@ import global.msnthrp.feeed.imageviewer.viewmodels.ImageViewerViewModel
 import global.msnthrp.feeed.models.owner.Group
 import global.msnthrp.feeed.services.DownloadFileService
 import global.msnthrp.feeed.utils.*
-import kotlinx.android.synthetic.main.activity_image_viewer.*
+import kotlinx.android.synthetic.main.image_viewer_bottom.*
+import kotlinx.android.synthetic.main.image_viewer_content.*
 import java.io.File
 import javax.inject.Inject
 
@@ -50,6 +52,7 @@ class ImageViewerActivity : AppCompatActivity() {
     private val wallPosts = arrayListOf<WallPost>()
 
     private val permissionHelper by lazy { PermissionHelper(this) }
+    private val bottomSheet by lazy { BottomSheetBehavior.from(llBottomSheet) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,15 +86,25 @@ class ImageViewerActivity : AppCompatActivity() {
     }
 
     private fun initButtons() {
-        ivShare.setOnClickListener { shareImage(this, getUrl()) }
+        ivShare.setOnClickListener { bottomSheet.state = BottomSheetBehavior.STATE_EXPANDED }
         ivDownload.setOnClickListener { downloadPhoto() }
         ivLike.setOnClickListener { likeOrNot() }
         rlHeader.setOnClickListener { openGroup() }
         tvText.setOnClickListener { showAlert(this, getWallPost()?.text) }
         ivCopy.setOnClickListener { copyPhoto() }
-        ivForwardImage.setOnClickListener { DialogsActivity.launch(this, getPhoto().photo) }
-        ivForwardPost.setOnClickListener {
-            DialogsActivity.launch(this, getWallPost() ?: return@setOnClickListener)
+
+        llShareImageInMessage.setOnClickListener {
+            bottomAction { DialogsActivity.launch(this, getPhoto().photo) }
+        }
+        llShareImageViaOther.setOnClickListener {
+            bottomAction { shareImage(this, getUrl()) }
+        }
+
+        llSharePostInMessage.setOnClickListener {
+            bottomAction { DialogsActivity.launch(this, getWallPost() ?: return@setOnClickListener) }
+        }
+        llSharePostViaOther.setOnClickListener {
+            bottomAction { shareText(this, getWallPost()?.link ?: return@setOnClickListener) }
         }
     }
 
@@ -161,6 +174,11 @@ class ImageViewerActivity : AppCompatActivity() {
         ) {
             startService()
         }
+    }
+
+    private inline fun bottomAction(action: () -> Unit) {
+        bottomSheet.state = BottomSheetBehavior.STATE_COLLAPSED
+        action()
     }
 
     private fun startService() {
