@@ -52,7 +52,7 @@ class ImageViewerActivity : AppCompatActivity() {
     private val wallPosts = arrayListOf<WallPost>()
 
     private val permissionHelper by lazy { PermissionHelper(this) }
-    private val bottomSheet by lazy { BottomSheetBehavior.from(llBottomSheet) }
+    private val bottomSheet by lazy { BottomSheetHelper(BottomSheetBehavior.from(llBottomSheet)) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,16 +77,24 @@ class ImageViewerActivity : AppCompatActivity() {
             adapter = FullScreenImageAdapter(
                 this@ImageViewerActivity,
                 urls,
-                { finish() },
-                { rlContent.toggle() }
+                { onBackPressed() },
+                { onTap() }
             )
             addOnPageChangeListener(SwipeListener())
             currentItem = presetPosition
         }
     }
 
+    private fun onTap() {
+        if (bottomSheet.isOpen()) {
+            bottomSheet.close()
+        } else {
+            rlContent.toggle()
+        }
+    }
+
     private fun initButtons() {
-        ivShare.setOnClickListener { bottomSheet.state = BottomSheetBehavior.STATE_EXPANDED }
+        ivShare.setOnClickListener { bottomSheet.open() }
         ivDownload.setOnClickListener { downloadPhoto() }
         ivLike.setOnClickListener { likeOrNot() }
         rlHeader.setOnClickListener { openGroup() }
@@ -177,7 +185,7 @@ class ImageViewerActivity : AppCompatActivity() {
     }
 
     private inline fun bottomAction(action: () -> Unit) {
-        bottomSheet.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheet.close()
         action()
     }
 
@@ -211,6 +219,14 @@ class ImageViewerActivity : AppCompatActivity() {
      * url of current photo in the highest resolution
      */
     private fun getUrl() = getPhoto().photo.getMaxPhoto().url
+
+    override fun onBackPressed() {
+        if (bottomSheet.isOpen()) {
+            bottomSheet.close()
+        } else {
+            super.onBackPressed()
+        }
+    }
 
     private inner class SwipeListener : ViewPager.OnPageChangeListener {
 
