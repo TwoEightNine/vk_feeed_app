@@ -77,9 +77,10 @@ abstract class FeedFragment : BaseFragment() {
     private fun onClick(position: Int, postPhotos: List<PostPhoto>) {
         val posFrom = if (position >= POSITION_OFFSET) position - POSITION_OFFSET else 0
         val posTo = if (position < postPhotos.size - POSITION_OFFSET) position + POSITION_OFFSET else postPhotos.size
+        val groupClick = this !is GroupFeedFragment
         ImageViewerActivity.launch(
             context, postPhotos.subList(posFrom, posTo),
-            viewModel.wallPosts, position - posFrom
+            viewModel.wallPosts, groupClick, position - posFrom
         )
     }
 

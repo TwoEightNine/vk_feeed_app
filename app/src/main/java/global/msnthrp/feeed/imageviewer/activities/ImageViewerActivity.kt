@@ -32,13 +32,20 @@ class ImageViewerActivity : AppCompatActivity() {
         const val ARG_PHOTOS = "photos"
         const val ARG_WALL_POSTS = "wallPosts"
         const val ARG_POSITION = "position"
-        const val REQUEST_STORAGE = 1836
+        const val ARG_GROUP_CLICK = "groupAction"
 
-        fun launch(context: Context?, photos: List<PostPhoto>, wallPosts: List<WallPost>, position: Int = 0) {
+        fun launch(
+            context: Context?,
+            photos: List<PostPhoto>,
+            wallPosts: List<WallPost>,
+            groupClick: Boolean = true,
+            position: Int = 0
+        ) {
             context?.startActivity(Intent(context, ImageViewerActivity::class.java).apply {
                 putExtra(ARG_PHOTOS, Array(photos.size) { photos[it] })
                 putExtra(ARG_WALL_POSTS, Array(wallPosts.size) { wallPosts[it] })
                 putExtra(ARG_POSITION, position)
+                putExtra(ARG_GROUP_CLICK, groupClick)
             })
         }
     }
@@ -47,6 +54,7 @@ class ImageViewerActivity : AppCompatActivity() {
     lateinit var viewModelFactory: ImageViewerViewModel.Factory
     private lateinit var viewModel: ImageViewerViewModel
 
+    private var groupClick = true
     private var presetPosition = 0
     private val photos = arrayListOf<PostPhoto>()
     private val wallPosts = arrayListOf<WallPost>()
@@ -97,7 +105,9 @@ class ImageViewerActivity : AppCompatActivity() {
         ivShare.setOnClickListener { bottomSheet.open() }
         ivDownload.setOnClickListener { downloadPhoto() }
         ivLike.setOnClickListener { likeOrNot() }
-        rlHeader.setOnClickListener { openGroup() }
+        if (groupClick) {
+            rlHeader.setOnClickListener { openGroup() }
+        }
         tvText.setOnClickListener { showAlert(this, getWallPost()?.text) }
         ivCopy.setOnClickListener { copyPhoto() }
 
@@ -139,6 +149,7 @@ class ImageViewerActivity : AppCompatActivity() {
             wallPosts.addAll(array.mapNotNull { it as? WallPost })
         }
         presetPosition = extras.getInt(ARG_POSITION, 0)
+        groupClick = extras.getBoolean(ARG_GROUP_CLICK)
     }
 
     private fun likeOrNot() {
