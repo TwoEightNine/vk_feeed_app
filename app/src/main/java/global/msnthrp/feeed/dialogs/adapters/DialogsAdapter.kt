@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import global.msnthrp.feeed.R
 import global.msnthrp.feeed.base.BaseAdapter
 import global.msnthrp.feeed.models.owner.Owner
+import global.msnthrp.feeed.models.owner.User
 import global.msnthrp.feeed.utils.load
 import kotlinx.android.synthetic.main.item_owner.view.*
 
@@ -26,8 +27,12 @@ class DialogsAdapter(
 
         fun bind(owner: Owner) {
             with(itemView) {
-                ivPhoto.load(owner.getPhoto()) {
-                    placeholder(R.drawable.shape_placeholder)
+                if (owner is User && owner.myself) {
+                    ivPhoto.setImageResource(R.drawable.ic_like_red)
+                } else {
+                    ivPhoto.load(owner.getPhoto()) {
+                        placeholder(R.drawable.shape_placeholder)
+                    }
                 }
                 tvTitle.text = owner.getTitle().toLowerCase()
                 setOnClickListener { onClick(items[adapterPosition]) }

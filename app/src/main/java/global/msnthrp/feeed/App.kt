@@ -11,8 +11,8 @@ class App : Application() {
         lateinit var appComponent: AppComponent
 
         const val VERSION = "5.92"
-        const val APP_ID = 6079611 // 6882114 // after approving
-        const val SCOPE_ALL = 339974 //with messages
+        const val APP_ID = 6882114 // after approving
+        const val SCOPE_ALL = 339974
         const val REDIRECT_URL = "https://oauth.vk.com/blank.html"
         const val API_BASE_URL = "https://api.vk.com/method/"
 

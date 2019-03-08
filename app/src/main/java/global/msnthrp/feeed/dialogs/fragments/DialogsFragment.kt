@@ -13,6 +13,7 @@ import global.msnthrp.feeed.dialogs.viewmodels.DialogsViewModel
 import global.msnthrp.feeed.dialogs.views.CommentAlertDialog
 import global.msnthrp.feeed.models.Wrapper
 import global.msnthrp.feeed.models.owner.Owner
+import global.msnthrp.feeed.models.owner.User
 import global.msnthrp.feeed.utils.showAlert
 import global.msnthrp.feeed.utils.showToast
 import kotlinx.android.synthetic.main.fragment_dialogs.*
