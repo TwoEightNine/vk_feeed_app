@@ -9,6 +9,7 @@ import global.msnthrp.feeed.base.BaseAdapter
 import global.msnthrp.feeed.models.owner.Owner
 import global.msnthrp.feeed.models.owner.User
 import global.msnthrp.feeed.utils.load
+import global.msnthrp.feeed.utils.setVisible
 import kotlinx.android.synthetic.main.item_owner.view.*
 
 class DialogsAdapter(
@@ -27,9 +28,9 @@ class DialogsAdapter(
 
         fun bind(owner: Owner) {
             with(itemView) {
-                if (owner is User && owner.myself) {
-                    ivPhoto.setImageResource(R.drawable.ic_like_red)
-                } else {
+                val isMyself = owner is User && owner.myself
+                rlCloud.setVisible(isMyself)
+                if (!isMyself) {
                     ivPhoto.load(owner.getPhoto()) {
                         placeholder(R.drawable.shape_placeholder)
                     }

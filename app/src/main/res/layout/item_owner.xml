@@ -28,6 +28,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 
+            <RelativeLayout
+                    android:id="@+id/rlCloud"
+                    android:background="@color/background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                <ImageView
+                        android:layout_margin="4dp"
+                        android:id="@+id/ivCloud"
+                        android:src="@drawable/ic_cloud"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+            </RelativeLayout>
+
+
         </androidx.cardview.widget.CardView>
 
 
