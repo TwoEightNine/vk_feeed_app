@@ -15,6 +15,7 @@
     <color name="icons">#fff</color>
     <color name="iconsDisabled">#666</color>
     <color name="accentDisabled">#33234D</color>
+    <color name="placeholder">#2A2438</color>
     <color name="redBar">#df2070</color>
     <color name="shapeDate">#aaa</color>
     <color name="red_like">#FF4747</color>

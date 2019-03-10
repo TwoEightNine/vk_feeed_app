@@ -76,6 +76,16 @@ interface ApiService {
         @Query("user_id") userId: Int
     ): Single<BaseResponse<ListResponse<Group>>>
 
+    @GET("groups.join")
+    fun joinGroup(
+        @Query("group_id") groupId: Int
+    ): Single<BaseResponse<Int>>
+
+    @GET("groups.leave")
+    fun leaveGroup(
+        @Query("group_id") groupId: Int
+    ): Single<BaseResponse<Int>>
+
     @GET("photos.get?album_id=profile&rev=1")
     fun getAvatar(
         @Query("owner_id") ownerId: Int

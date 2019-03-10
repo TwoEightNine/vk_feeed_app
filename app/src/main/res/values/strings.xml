@@ -37,6 +37,8 @@
     <string name="send_in_message">send in message</string>
     <string name="share_via_other_app">share via other app</string>
     <string name="saved_messages">chat with myself</string>
+    <string name="subscribe">subscribe</string>
+    <string name="unsubscribe">unsubscribe</string>
 
     <string name="settings_general">general</string>
     <string name="hide_ads">hide posts marked as ads</string>

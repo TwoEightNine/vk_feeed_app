@@ -17,6 +17,32 @@ class FeedRepository @Inject constructor(
     private val livePrefs: LivePrefs
 ) {
 
+    fun subscribe(
+        group: Group,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        api.joinGroup(group.id)
+            .subscribeSmart({
+                onSuccess()
+            }, { _, message ->
+                onError(message)
+            })
+    }
+
+    fun unsubscribe(
+        group: Group,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        api.leaveGroup(group.id)
+            .subscribeSmart({
+                onSuccess()
+            }, { _, message ->
+                onError(message)
+            })
+    }
+
     fun loadNewsFeed(
         nextFrom: String? = null,
         onSuccess: (ArrayList<PostPhoto>, ArrayList<WallPost>, String?) -> Unit,

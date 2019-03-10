@@ -45,4 +45,6 @@
     <string name="want_to_log_out">вы действительно хотите выйти?</string>
     <string name="settings_about">о приложении</string>
     <string name="version">%s\вер. %s (от %s)</string>
+    <string name="subscribe">подписаться</string>
+    <string name="unsubscribe">отписаться</string>
 </resources>

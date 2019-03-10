@@ -12,6 +12,7 @@ import global.msnthrp.feeed.models.owner.Group
 class GroupFeedViewModel(repo: FeedRepository) : FeedViewModel(repo) {
 
     private val avatarLiveData = WrappedMutableLiveData<Photo>()
+    private val subscriptionLiveData = WrappedMutableLiveData<Boolean>()
     private var page = 0
 
     private lateinit var group: Group
@@ -19,14 +20,25 @@ class GroupFeedViewModel(repo: FeedRepository) : FeedViewModel(repo) {
     fun init(gr: Group) {
         if (!::group.isInitialized) {
             group = gr
+            subscriptionLiveData.value = Wrapper(group.isMember)
         }
     }
 
     fun getAvatar() = avatarLiveData as WrappedLiveData<Photo>
 
+    fun getSubscription() = subscriptionLiveData as WrappedLiveData<Boolean>
+
     fun loadAvatar() {
         repo.loadAvatar(group, ::onAvatarLoaded) {
             avatarLiveData.value = Wrapper(error = it)
+        }
+    }
+
+    fun subscribeOrNot() {
+        if (group.isMember) {
+            repo.unsubscribe(group, ::onSubscribedOrNot, ::onSubscribeError)
+        } else {
+            repo.subscribe(group, ::onSubscribedOrNot, ::onSubscribeError)
         }
     }
 
@@ -55,6 +67,15 @@ class GroupFeedViewModel(repo: FeedRepository) : FeedViewModel(repo) {
         }
         page++
         feedLiveData.value = Wrapper(existing.apply { addAll(postPhotos) })
+    }
+
+    private fun onSubscribedOrNot() {
+        group.isMember = !group.isMember
+        subscriptionLiveData.value = Wrapper(group.isMember)
+    }
+
+    private fun onSubscribeError(error: String) {
+        subscriptionLiveData.value = Wrapper(error = error)
     }
 
     companion object {
