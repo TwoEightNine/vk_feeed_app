@@ -30,7 +30,7 @@
     <string name="went_wrong">something went wrong..</string>
     <string name="details">details</string>
     <string name="send_report">send report</string>
-    <string name="post_photo_subtitle">(%d/%d) %s</string>
+    <string name="post_photo_subtitle" translatable="false">(%d/%d) %s</string>
     <string name="need_access_to_storage">app needs an access to your device\'s storage for downloading files</string>
     <string name="sent_successfully">sent successfully</string>
     <string name="your_comment">your comment..</string>

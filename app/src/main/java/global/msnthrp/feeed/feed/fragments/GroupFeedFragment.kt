@@ -8,11 +8,8 @@ import global.msnthrp.feeed.feed.viewmodel.GroupFeedViewModel
 import global.msnthrp.feeed.models.Wrapper
 import global.msnthrp.feeed.models.attachments.Photo
 import global.msnthrp.feeed.models.owner.Group
-import global.msnthrp.feeed.utils.HeaderDecoration
 import global.msnthrp.feeed.utils.load
-import kotlinx.android.synthetic.main.fragment_feed.*
 import kotlinx.android.synthetic.main.fragment_group.*
-import kotlinx.android.synthetic.main.header_group.view.*
 
 class GroupFeedFragment : FeedFragment() {
 

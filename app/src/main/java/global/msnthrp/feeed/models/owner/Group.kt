@@ -26,8 +26,18 @@ data class Group(
 
     @SerializedName("photo_200")
     @Expose
-    val photo200: String
+    val photo200: String,
+
+    @SerializedName("is_member")
+    @Expose
+    var membership: Int
 ) : Parcelable, Owner {
+
+    var isMember: Boolean
+        get() = membership == 1
+        set(value) {
+            membership = if (value) 1 else 0
+        }
 
     override fun getTitle() = name
 
