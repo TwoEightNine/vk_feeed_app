@@ -14,7 +14,11 @@ import global.msnthrp.feeed.base.BaseAdapter
  * provides pagination functionality
  * [loader] is being invoked when there is a need to load more items. Int param is an offset
  *
- * - call [BaseReachAdapter.stopLoading] when you stop loading smth
+ * usage:
+ *  - [BaseReachAdapter.startLoading]
+ *  - // load smth
+ *  - [BaseReachAdapter.update] or [BaseReachAdapter.stopLoading]
+ *  - on reload call [BaseReachAdapter.resetDone]
  */
 abstract class BaseReachAdapter<T : Any, VH : RecyclerView.ViewHolder> constructor(
     context: Context,
@@ -92,9 +96,19 @@ abstract class BaseReachAdapter<T : Any, VH : RecyclerView.ViewHolder> construct
 
     private fun isStubLoad(obj: T) = stubLoadItem === obj
 
+    /**
+     * adds loader to RecyclerView
+     */
     fun startLoading() {
         isLoading = true
         addStubLoad()
+    }
+
+    /**
+     * restarts loading
+     */
+    fun resetDone() {
+        isDone = false
     }
 
     private fun addStubLoad() {
@@ -104,7 +118,12 @@ abstract class BaseReachAdapter<T : Any, VH : RecyclerView.ViewHolder> construct
         }
     }
 
+    /**
+     * manipulates the states
+     * pass empty list to stop loading
+     */
     override fun update(items: List<T>) {
+        removeStub()
         val noChanges = itemCount == items.size
         super.update(items)
         isLoading = false
@@ -113,7 +132,7 @@ abstract class BaseReachAdapter<T : Any, VH : RecyclerView.ViewHolder> construct
         }
     }
 
-    fun removeStub() {
+    private fun removeStub() {
         remove(stubLoadItem)
         isLoaderAdded = false
     }

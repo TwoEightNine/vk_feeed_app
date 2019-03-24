@@ -24,7 +24,7 @@ class DialogsViewModel(private val repo: DialogsRepository) : ViewModel() {
         repo.loadDialogs(::onDialogsLoaded, ::onErrorOccurred)
     }
 
-    fun share(owner: Owner, attachment: String, comment: String) {
+    fun share(owner: Owner, attachment: String, comment: String? = null) {
         repo.send(owner, comment, attachment, ::onShared, ::onErrorOccurred)
     }
 

@@ -11,10 +11,15 @@ import kotlinx.android.synthetic.main.dialog_comment.view.*
 
 class CommentAlertDialog(
     context: Context,
-    private val onCommentAdded: (String) -> Unit) : AlertDialog(context) {
+    name: String,
+    private val onCommentAdded: (String) -> Unit
+) : AlertDialog(context) {
 
     init {
         val view = View.inflate(context, R.layout.dialog_comment, null)
+        with(view) {
+            etComment.hint = context.getString(R.string.your_comment, name.toLowerCase())
+        }
         setView(view)
         setButton(DialogInterface.BUTTON_POSITIVE, context.getString(android.R.string.ok)) { _, _ ->
             onCommentAdded(view.etComment.asText())

@@ -33,7 +33,7 @@
     <string name="send_report">отправить</string>
     <string name="need_access_to_storage">приложению необходимо разрешения для загрузки изображений</string>
     <string name="sent_successfully">успешно отправлено</string>
-    <string name="your_comment">ваш комментарий..</string>
+    <string name="your_comment">ваш комментарий для %s..</string>
     <string name="send_in_message">отправить сообщением</string>
     <string name="share_via_other_app">отправить другим приложением</string>
     <string name="saved_messages">диалог с собой</string>

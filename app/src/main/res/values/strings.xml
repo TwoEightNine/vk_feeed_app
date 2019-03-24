@@ -33,7 +33,7 @@
     <string name="post_photo_subtitle" translatable="false">(%d/%d) %s</string>
     <string name="need_access_to_storage">app needs an access to your device\'s storage for downloading files</string>
     <string name="sent_successfully">sent successfully</string>
-    <string name="your_comment">your comment..</string>
+    <string name="your_comment">your comment for %s..</string>
     <string name="send_in_message">send in message</string>
     <string name="share_via_other_app">share via other app</string>
     <string name="saved_messages">chat with myself</string>

@@ -97,9 +97,9 @@ interface ApiService {
     @GET("messages.send")
     fun send(
         @Query("peer_id") peerId: Int,
-        @Query("message") message: String,
         @Query("attachment") attachment: String,
-        @Query("random_id") randomId: Int
+        @Query("random_id") randomId: Int,
+        @Query("message") message: String? = null
     ): Single<BaseResponse<Int>>
 
     @GET

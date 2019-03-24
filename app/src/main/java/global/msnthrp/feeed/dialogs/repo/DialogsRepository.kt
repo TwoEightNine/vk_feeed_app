@@ -33,7 +33,7 @@ class DialogsRepository @Inject constructor(
 
     fun send(
         owner: Owner,
-        message: String,
+        message: String? = null,
         attachment: String,
         onSuccess: () -> Unit,
         onError: (String) -> Unit
@@ -44,7 +44,7 @@ class DialogsRepository @Inject constructor(
             is Chat -> owner.peerId
             else -> return
         }
-        api.send(peerId, message, attachment, getRandomId())
+        api.send(peerId, attachment, getRandomId(), message)
             .subscribeSmart({
                 onSuccess()
             }, { _, error ->

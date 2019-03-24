@@ -51,6 +51,7 @@ abstract class FeedFragment : BaseFragment() {
         swipeRefresh.isRefreshing = true
         swipeRefresh.setOnRefreshListener {
             viewModel.resetFeed()
+            adapter.resetDone()
             loadMore()
         }
 

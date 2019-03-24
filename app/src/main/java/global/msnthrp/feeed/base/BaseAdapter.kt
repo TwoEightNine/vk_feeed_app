@@ -13,7 +13,8 @@ import global.msnthrp.feeed.utils.setVisible
  */
 
 abstract class BaseAdapter<T, VH : RecyclerView.ViewHolder>(
-    protected val context: Context) : RecyclerView.Adapter<VH>() {
+    protected val context: Context
+) : RecyclerView.Adapter<VH>() {
 
     protected val items: ArrayList<T> = arrayListOf()
 
@@ -94,14 +95,14 @@ abstract class BaseAdapter<T, VH : RecyclerView.ViewHolder>(
 
     override fun getItemCount() = items.size
 
-    fun lastVisiblePosition(layoutManager: RecyclerView.LayoutManager?) = when(layoutManager) {
+    fun lastVisiblePosition(layoutManager: RecyclerView.LayoutManager?) = when (layoutManager) {
         is LinearLayoutManager -> layoutManager.findLastVisibleItemPosition()
         is GridLayoutManager -> layoutManager.findLastVisibleItemPosition()
         else -> -1
     }
 
 
-    fun firstVisiblePosition(layoutManager: RecyclerView.LayoutManager?) = when(layoutManager) {
+    fun firstVisiblePosition(layoutManager: RecyclerView.LayoutManager?) = when (layoutManager) {
         is LinearLayoutManager -> layoutManager.findFirstVisibleItemPosition()
         is GridLayoutManager -> layoutManager.findFirstVisibleItemPosition()
         else -> -1

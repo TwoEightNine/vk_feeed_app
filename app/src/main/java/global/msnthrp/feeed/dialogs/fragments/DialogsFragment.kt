@@ -57,11 +57,11 @@ class DialogsFragment : BaseFragment() {
     }
 
     private fun onClick(owner: Owner) {
-        CommentAlertDialog(context ?: return) { comment ->
+        CommentAlertDialog(context ?: return, owner.getTitle()) { comment ->
             viewModel.share(
                 owner,
                 attachment ?: return@CommentAlertDialog,
-                comment
+                if (comment.isEmpty()) null else comment
             )
         }.show()
     }
