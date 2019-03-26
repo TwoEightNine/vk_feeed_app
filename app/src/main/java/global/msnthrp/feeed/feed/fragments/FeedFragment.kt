@@ -51,7 +51,7 @@ abstract class FeedFragment : BaseFragment() {
         swipeRefresh.isRefreshing = true
         swipeRefresh.setOnRefreshListener {
             viewModel.resetFeed()
-            adapter.resetDone()
+            adapter.reset()
             loadMore()
         }
 
@@ -73,6 +73,7 @@ abstract class FeedFragment : BaseFragment() {
 
     private fun loadMore(pos: Int = 0) {
         viewModel.loadFeed()
+        adapter.startLoading()
     }
 
     private fun onClick(position: Int, postPhotos: List<PostPhoto>) {

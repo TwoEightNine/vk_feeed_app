@@ -25,20 +25,11 @@ abstract class BaseReachAdapter<T : Any, VH : RecyclerView.ViewHolder> construct
     private var loader: (Int) -> Unit
 ) : BaseAdapter<T, RecyclerView.ViewHolder>(context) {
 
-    /**
-     * indicates the adapter is showing loader
-     */
-    private var isLoaderAdded: Boolean = false
+    var prevState: State = State.INITIAL
+        private set
 
-    /**
-     * indicated the adapter is in loading state
-     */
-    private var isLoading: Boolean = false
-
-    /**
-     * indicates the adapter obtained all data (no more loadings)
-     */
-    private var isDone: Boolean = false
+    var state: State = State.INITIAL
+        private set
 
     private lateinit var stubLoadItem: T
 
@@ -59,9 +50,10 @@ abstract class BaseReachAdapter<T : Any, VH : RecyclerView.ViewHolder> construct
 
                 val total = itemCount
                 val last = lastVisiblePosition(recyclerView.layoutManager)
-                if (!isDone && !isLoading && last >= total - THRESHOLD) {
+                val rightState = state in arrayListOf(State.INITIAL, State.USUAL)
+                if (rightState && last >= total - THRESHOLD) {
+                    startLoading(true)
                     loader.invoke(total)
-                    startLoading()
                 }
             }
         })
@@ -69,7 +61,7 @@ abstract class BaseReachAdapter<T : Any, VH : RecyclerView.ViewHolder> construct
 
     override fun clear() {
         super.clear()
-        isDone = false
+        switchStates(State.INITIAL)
     }
 
     override fun onCreateViewHolder(
@@ -99,23 +91,18 @@ abstract class BaseReachAdapter<T : Any, VH : RecyclerView.ViewHolder> construct
     /**
      * adds loader to RecyclerView
      */
-    fun startLoading() {
-        isLoading = true
-        addStubLoad()
+    fun startLoading(addLoader: Boolean = false) {
+        switchStates(State.LOADING)
+        if (addLoader) {
+            add(stubLoadItem)
+        }
     }
 
     /**
      * restarts loading
      */
-    fun resetDone() {
-        isDone = false
-    }
-
-    private fun addStubLoad() {
-        if (!isLoaderAdded) {
-            add(stubLoadItem)
-            isLoaderAdded = true
-        }
+    fun reset() {
+        switchStates(State.INITIAL)
     }
 
     /**
@@ -123,27 +110,29 @@ abstract class BaseReachAdapter<T : Any, VH : RecyclerView.ViewHolder> construct
      * pass empty list to stop loading
      */
     override fun update(items: List<T>) {
-        removeStub()
-        val noChanges = itemCount == items.size
-        super.update(items)
-        isLoading = false
-        if (noChanges) {
-            isDone = true
-        }
-    }
-
-    private fun removeStub() {
         remove(stubLoadItem)
-        isLoaderAdded = false
+        val hasChanges = itemCount != items.size
+        super.update(items)
+        val newState = when {
+            hasChanges || prevState == State.INITIAL -> State.USUAL
+            else -> State.FINISHED
+        }
+        switchStates(newState)
     }
 
-    private fun stopLoading() {
-        isLoading = false
-        removeStub()
+    private fun switchStates(newState: State) {
+        prevState = state
+        state = newState
     }
-
 
     inner class LoaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    enum class State {
+        INITIAL,
+        USUAL,
+        LOADING,
+        FINISHED
+    }
 
     companion object {
 
